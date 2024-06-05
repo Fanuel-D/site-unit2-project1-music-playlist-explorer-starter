@@ -10,18 +10,65 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <header>
-        <!-- Your header content here -->
+        <h1 class="headerText">Music Playlist Explorer</h1>
+        
     </header>
 
     <main> 
-        <!-- Your main content here -->
+
+    <div onclick="openModal({name: 'Summer Beats Festival', imageUrl: './assets/img/playlist.png', dates: 'July 15-17'})"
+        class = "playlistCards">
+        <img id = "playListImg" src="./assets/img/playlist.png" alt="image 1">
+        <div id="tt">
+            <h4>song 3 name</h2>
+            <p>song 1 description</p>
+        </div>
+        
+    </div>
+    
+
+
+
+    <div id="festivalModal" class="modal">
+        <div class="modal-content">
+           <span class="close">&times;</span>
+           
+           <div class = "topMod">
+                <div class = "topLeft">
+                    <img id="festivalImage" src= "./assets/img/playlist.png" alt="Festival Image">
+                    <button>Shuffle</button>
+                </div>
+                
+                
+                <div class = "topRight">
+                    <h1 id="festivalName"></h1>
+                    <h5 id="festivalText"> Name and festival type of thing</h5>
+                </div>
+                
+           </div>
+          
+           <div class = "bottomMod">
+                <img id = "modImgBottom" src="./assets/img/song.png" alt="image 1">
+                <div id="modalt">
+                    <h4>song 3 name</h2>
+                    <p>song 1 description</p>
+                    <p id="festivalDates"></p>
+                </div>
+            
+           </div>
+           
+        </div>
+     </div>
+        
+            
     </main>
 
     <footer>
-        <!-- Your footer content here -->
+        <p>footer content goes here</p>
     </footer>
     <script src="data/data.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
