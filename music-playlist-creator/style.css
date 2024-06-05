@@ -39,7 +39,6 @@ header {
 footer {
     background-color: lightgray;
     padding: 10px;
-
 }
 
 main {
@@ -68,6 +67,11 @@ main {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,2);
 }
 
+.bottomPart {
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+}
 
 .topMod {
     display: flex;
@@ -75,7 +79,6 @@ main {
     align-items: center;
     gap: 30px;
     margin-bottom: 40px;
-    
 }
 
 #festivalImage {
@@ -88,6 +91,13 @@ main {
 .bottomMod {
     display: flex;
     flex-direction: row;
+    /* gap: 30px; */
+    background-color: #c6c4c4;
+    padding: 20px;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .topLeft,.topRight {
@@ -95,9 +105,12 @@ main {
     flex-direction: column;
 }
 
-.topRight {
-    justify-content: center;
+.bottomLeft {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
+
 
 button {
     background-color: rgb(173, 216, 230);
@@ -105,6 +118,11 @@ button {
     border-width: 0;
     border-radius: 5px;
     padding: 10px;
+}
+
+.bottomInnerMod {
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -116,11 +134,12 @@ button {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: auto; 
+    /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
  }
 
- .modal-content {
+.modal-content {
     background-color: #fefefe;
     display: flex;
     flex-direction: column;
@@ -133,10 +152,16 @@ button {
     width: 80%; /* Could be more or less, depending on screen size */
  }
 
+
+ .close {
+    display: flex;
+    align-self: flex-end;
+}
+
  #modImgBottom {
     display: flex;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px; border-radius: 10px;
     /* flex: 0 0 10px; */
  }
  .close {

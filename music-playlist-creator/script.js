@@ -20,14 +20,37 @@ window.onclick = function(event) {
 
 let main = document.querySelector("main")
 let cards = document.querySelector(".playlistCards")
+let temp_card2 = cards.cloneNode(true)
+main.removeChild(cards);
 
-for(let i  = 0; i< 16; i++){
-    main.appendChild(cards.cloneNode(true));
+
+let playlists = data.playlists;
+console.log(playlists)
+
+
+playlists.forEach(function (playlist) {
+   let temp_card = temp_card2.cloneNode(true);
+   let title = temp_card.querySelector("h4")
+   let image  = temp_card.querySelector("#playListImg")
+   let blurb = temp_card.querySelector("p")
+   blurb.innerText = `Create by ${playlist.playlist_creator}`
+
+
+
+   image.src = playlist.playlist_art
+   title.innerText = playlist.playlist_name
+   main.appendChild(temp_card)
+})
+
+
+
+
+let bottomMod = document.querySelector(".bottomMod");
+let bottomPart = document.querySelector(".bottomPart")
+
+for(let i = 0; i < 10; i++) {
+    bottomPart.appendChild(bottomMod.cloneNode(true))
 }
 
-cards.addEventListener("mouseenter", (e)=>{
-    e.target.style.transform = "translateY(5px)";
-    
-})
 
 
