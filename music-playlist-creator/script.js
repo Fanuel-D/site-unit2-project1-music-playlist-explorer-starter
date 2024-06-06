@@ -1,19 +1,53 @@
 // JavaScript for Opening and Closing the Modal
 var modal = document.getElementById("festivalModal");
 var span = document.getElementsByClassName("close")[0];
+let count = 0;
+let bottomMod = document.querySelector(".bottomMod") 
+let clone1 = bottomMod.cloneNode(true)
 
-function openModal(festival) {
-   document.getElementById('festivalName').innerText = festival.playlist_name;
-   document.getElementById('festivalImage').src = festival.playlist_art;
-   document.getElementById("festivalText").innerText = festival.playlist_creator;
-   document.getElementById('festivalDates').innerText = `Dates: ${festival.dates}`;
-   let songs = festival.songs;
+function openModal(festival,event) {
 
-   // songs.forEach(function populate {
+   // document.getElementById('festivalDates').innerText = `Dates: ${festival.dates}`;
 
-   // })
-
-   modal.style.display = "block";
+      let songs = festival.songs;
+      if (event.target.id == "playListImg"){
+         let modal1 = event.target.parentNode.querySelector(".modal")
+         
+         event.target.parentNode.querySelector(".modal").style.display = "block"
+         event.target.parentNode.querySelector(".close").onclick = function() {
+            event.target.parentNode.querySelector(".modal").style.display = "none"
+         }
+         modal1.querySelector(".festivalName").innerText = festival.playlist_name;
+         modal1.querySelector(".festivalImage").src = festival.playlist_art;
+         modal1.querySelector(".festivalText").innerText = festival.playlist_creator;
+         let temp3 = modal1.querySelector(".bottomPart")
+         modal1.querySelector("h3").innerText = songs[0].title
+         if (count == 0){
+            for(let i = 1; i < songs.length; i++){
+               let c = clone1.cloneNode(true)
+               temp3.appendChild(c)
+               
+               c.querySelector("h3").innerText = songs[i].title
+   
+            }
+         }
+         
+         
+         // window.onclick = function() {
+         //    event.target.parentNode.querySelector(".modal").style.display = "none"
+         // }
+      }else {
+         event.target.parentElement.parentElement.querySelector(".modal").style.display = "block"
+         event.target.parentElement.parentElement.querySelector(".close").onclick = function() {
+            event.target.parentElement.parentElement.querySelector(".modal").style.display = "none"
+         }
+         // window.onclick = function() {
+         //    event.target.parentElement.parentElement.querySelector(".modal").style.display = "none"
+         // }
+      }
+   
+   
+   count+=1
 }
 
 span.onclick = function() {
@@ -32,7 +66,7 @@ main.removeChild(cards);
 
 
 let playlists = data.playlists;
-console.log(playlists)
+// console.log(playlists)
 
 
 playlists.forEach(function (playlist) {
@@ -46,19 +80,19 @@ playlists.forEach(function (playlist) {
 
    image.src = playlist.playlist_art
    title.innerText = playlist.playlist_name
-   temp_card.addEventListener("click", () => openModal(playlist))
+   temp_card.addEventListener("click", (e) => openModal(playlist,e))
    main.appendChild(temp_card)   
 })
 
 
 
 
-let bottomMod = document.querySelector(".bottomMod");
-let bottomPart = document.querySelector(".bottomPart")
 
-for(let i = 0; i < 10; i++) {
-    bottomPart.appendChild(bottomMod.cloneNode(true))
-}
+
+
+// for(let i = 0; i < 10; i++) {
+//     bottomPart.appendChild(bottomMod.cloneNode(true))
+// }
 
 
 

@@ -20,53 +20,55 @@
 
     <div class = "playlistCards">
         <img id = "playListImg" src="./assets/img/playlist.png" alt="image 1">
-        <div id="tt">
+        <div class="tt">
             <h4>song 3 name</h2>
             <p>song 1 description</p>
         </div>
+
+        <div id="festivalModal" class="modal">
+            <div class="modal-content">
+               <span class="close">&times;</span>
+               
+               <div class = "topMod">
+                    <div class = "topLeft">
+                        <img class="festivalImage" src= "./assets/img/playlist.png" alt="Festival Image">
+                        <button>Shuffle</button>
+                    </div>
+                    
+                    
+                    <div class = "topRight">
+                        <h1 class="festivalName"></h1>
+                        <h5 class="festivalText"> Name and festival type of thing</h5>
+                    </div>
+                    
+               </div>
+              
+               <div class = "bottomPart">
+                    <div class = "bottomMod">
+                        
+                        <div class="bottomLeft">
+                            <img class = "modImgBottom" src="./assets/img/song.png" alt="image 1">
+                            <div class="bottomInnerMod">
+                                <h3>song 3 name</h3>
+                                <h9>song 1 description</h9>
+                                <h7 id="festivalDates"></h7>
+                            </div>
+                        </div>
+                        
+                        <h5 class = "time">Time</h5>
+                    
+                    </div>
+               </div>
+        
+            </div>
+         </div>
         
     </div>
     
 
 
 
-    <div id="festivalModal" class="modal">
-        <div class="modal-content">
-           <span class="close">&times;</span>
-           
-           <div class = "topMod">
-                <div class = "topLeft">
-                    <img id="festivalImage" src= "./assets/img/playlist.png" alt="Festival Image">
-                    <button>Shuffle</button>
-                </div>
-                
-                
-                <div class = "topRight">
-                    <h1 id="festivalName"></h1>
-                    <h5 id="festivalText"> Name and festival type of thing</h5>
-                </div>
-                
-           </div>
-          
-           <div class = "bottomPart">
-                <div class = "bottomMod">
-                    
-                    <div class="bottomLeft">
-                        <img id = "modImgBottom" src="./assets/img/song.png" alt="image 1">
-                        <div class="bottomInnerMod">
-                            <h3>song 3 name</h3>
-                            <h9>song 1 description</h9>
-                            <h7 id="festivalDates"></h7>
-                        </div>
-                    </div>
-                    
-                    <h5 class = "time">Time</h5>
-                
-                </div>
-           </div>
     
-        </div>
-     </div>
         
             
     </main>
