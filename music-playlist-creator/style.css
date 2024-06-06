@@ -118,22 +118,35 @@ button {
     border-width: 0;
     border-radius: 5px;
     padding: 10px;
+
+}
+button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,2);
 }
 
 .bottomInnerMod {
     display: flex;
     flex-direction: column;
 }
+.likeBar {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
 
+}
 
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
+    bottom: 0;
+    right: 0; 
     width: 100%; /* Full width */
     height: 100%; /* Full height */
+    /* margin: auto; */
     overflow: auto; 
     /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
