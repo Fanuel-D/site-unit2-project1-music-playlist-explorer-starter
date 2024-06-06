@@ -3,9 +3,16 @@ var modal = document.getElementById("festivalModal");
 var span = document.getElementsByClassName("close")[0];
 
 function openModal(festival) {
-   document.getElementById('festivalName').innerText = festival.name;
-   document.getElementById('festivalImage').src = festival.imageUrl;
+   document.getElementById('festivalName').innerText = festival.playlist_name;
+   document.getElementById('festivalImage').src = festival.playlist_art;
+   document.getElementById("festivalText").innerText = festival.playlist_creator;
    document.getElementById('festivalDates').innerText = `Dates: ${festival.dates}`;
+   let songs = festival.songs;
+
+   // songs.forEach(function populate {
+
+   // })
+
    modal.style.display = "block";
 }
 
@@ -33,13 +40,14 @@ playlists.forEach(function (playlist) {
    let title = temp_card.querySelector("h4")
    let image  = temp_card.querySelector("#playListImg")
    let blurb = temp_card.querySelector("p")
-   blurb.innerText = `Create by ${playlist.playlist_creator}`
+   blurb.innerText = `Created by ${playlist.playlist_creator}`
 
 
 
    image.src = playlist.playlist_art
    title.innerText = playlist.playlist_name
-   main.appendChild(temp_card)
+   temp_card.addEventListener("click", () => openModal(playlist))
+   main.appendChild(temp_card)   
 })
 
 
