@@ -145,17 +145,14 @@ button:hover {
 
 .modal {
     display: none; /* Hidden by default */
-    position: absolute; /* Stay in place */
+    position: absolute; 
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    bottom: 0;
+    bottom: 100px;
     right: 0; 
     width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    /* margin: auto; */
-    overflow: auto; 
-    /* Enable scroll if needed */
+    height: 130%; /* Full height */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
  }
 

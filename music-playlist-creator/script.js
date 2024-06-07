@@ -10,7 +10,8 @@ function openModal(festival,event) {
    if (event.target.id == "playListImg"){
       let modal1 = event.target.parentNode.querySelector(".modal")
       
-      event.target.parentNode.querySelector(".modal").style.display = "block"
+      event.target.parentNode.querySelector(".modal").style.display = "flex"
+      event.target.parentNode.querySelector(".modal").style.margin = "auto";
       event.target.parentNode.querySelector(".close").onclick = function() {
          event.target.parentNode.querySelector(".modal").style.display = "none"
       }
