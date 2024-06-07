@@ -8,12 +8,11 @@ function openModal(festival,event) {
 
    let songs = festival.songs;
    if (event.target.id == "playListImg"){
-      let modal1 = event.target.parentNode.querySelector(".modal")
       
-      event.target.parentNode.querySelector(".modal").style.display = "flex"
-      event.target.parentNode.querySelector(".modal").style.margin = "auto";
-      event.target.parentNode.querySelector(".close").onclick = function() {
-         event.target.parentNode.querySelector(".modal").style.display = "none"
+      event.target.parentElement.parentElement.querySelector(".modal").style.display = "flex"
+      event.target.parentElement.parentElement.querySelector(".modal").style.margin = "auto";
+      event.target.parentElement.parentElement.querySelector(".close").onclick = function() {
+         event.target.parentElement.parentElement.querySelector(".modal").style.display = "none"
       }
       
    }
@@ -79,9 +78,12 @@ playlists.forEach(function (playlist) {
    let like = temp_card.querySelector(".like")
 
    
-   like.addEventListener("click",()=>{
+   like.addEventListener("click",(e)=>{
+      e.stopPropagation()
       playlist.likeCount +=1 
       temp_card.querySelector(".counter").innerText = playlist.likeCount
+      
+      
    })
 
    like.addEventListener("mouseenter",()=>{

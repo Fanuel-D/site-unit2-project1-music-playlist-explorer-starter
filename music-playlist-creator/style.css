@@ -54,7 +54,7 @@ main {
 }
 
 
-.playlistCards {
+.new {
     
     width: 230px;
     height: 330px;
@@ -68,7 +68,7 @@ main {
     background-color: white;
 }
 
-.playlistCards:hover {
+.new:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,2);
 }
 
@@ -145,15 +145,17 @@ button:hover {
 
 .modal {
     display: none; /* Hidden by default */
-    position: absolute; 
+    position: fixed; 
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    bottom: 100px;
+    bottom: 0;
     right: 0; 
     width: 100%; /* Full width */
     height: 130%; /* Full height */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
  }
 
 .modal-content {
