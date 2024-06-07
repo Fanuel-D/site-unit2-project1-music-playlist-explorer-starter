@@ -95,17 +95,10 @@ playlists.forEach(function (playlist) {
 
    
 
-   edit.addEventListener("click", () => {
+   edit.addEventListener("click", (e) => {
+      e.stopPropagation()
       editFunc(temp_card)
    })
-
-   let save = document.querySelector(".save")
-   console.log(save)
-   save.addEventListener("click", ()=> {
-      console.log("here")
-      // saveClicked(temp_card,e);
-   })
-
    
    
 })
@@ -137,10 +130,10 @@ function shuffle (songs,mine,playlist) {
    let editMenu = document.querySelector(".editMenu");
    editMenu.innerHTML = `
        <label for="name"> Name </label>
-       <input type="text" id="name" name="name" placeholder="${temp_card.querySelector("h4").innerText}" required>
+       <input type="text" id="name" name="name" placeholder="${temp_card.querySelector("h4").innerText}" >
        
        <label for="creater"> Your name:</label>
-       <input type="text" name="creater" id="creater" placeholder="${temp_card.querySelector("p").innerText}" required>
+       <input type="text" name="creater" id="creater" placeholder="${temp_card.querySelector(".songDescription").innerText}" >
        
        <button class="save">Save</button>
    `;
@@ -149,7 +142,9 @@ function shuffle (songs,mine,playlist) {
    let saveButton = editMenu.querySelector(".save");
    saveButton.addEventListener("click", () => {
        let name = document.querySelector("#name").value;
+       let blurb = document.querySelector("#creater").value;
        temp_card.querySelector("h4").innerText = name;
+       temp_card.querySelector(".songDescription").innerText=  blurb
        editMenu.style.display = "none";
    });
 }
