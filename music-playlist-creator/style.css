@@ -51,6 +51,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content:space-evenly;
+    margin: 100px;
+    margin-top: 10px;
 }
 
 
@@ -125,6 +127,7 @@ button {
     border-width: 0;
     border-radius: 5px;
     padding: 10px;
+    margin: 10px;
 
 }
 button:hover {
@@ -142,8 +145,26 @@ button:hover {
     align-items: center;
 
 }
+.editMenu {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1; /* Sit on top */
+    /* left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;  */
+    width: 40%; /* Full width */
+    height: 50%; /* Full height */
+    background-color:  #fefefe; /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    
 
-.modal {
+}
+
+.modal{
     display: none; /* Hidden by default */
     position: fixed; 
     z-index: 1; /* Sit on top */

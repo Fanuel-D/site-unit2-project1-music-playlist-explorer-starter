@@ -1,32 +1,20 @@
-// JavaScript for Opening and Closing the Modal
-var modal = document.getElementById("festivalModal");
-var span = document.getElementsByClassName("close")[0];
+
 let bottomMod = document.querySelector(".bottomMod") 
 let clone1 = bottomMod.cloneNode(true)
 
-function openModal(festival,event) {
+// JavaScript for Opening and Closing the Modal
+function openModal(festival, temp_card) {
+   let modal = temp_card.querySelector(".modal");
+   modal.style.display = "flex";
+   modal.style.margin = "auto";
 
-   let songs = festival.songs;
-   if (event.target.id == "playListImg"){
-      
-      event.target.parentElement.parentElement.querySelector(".modal").style.display = "flex"
-      event.target.parentElement.parentElement.querySelector(".modal").style.margin = "auto";
-      event.target.parentElement.parentElement.querySelector(".close").onclick = function() {
-         event.target.parentElement.parentElement.querySelector(".modal").style.display = "none"
-      }
-      
-   }
-
+   let closeButton = temp_card.querySelector(".close");
+   closeButton.onclick = function(event) {
+      event.stopPropagation()
+      modal.style.display = "none"
+   };
 }
 
-span.onclick = function() {
-   modal.style.display = "none";
-}
-window.onclick = function(event) {
-   if (event.target == modal) {
-      modal.style.display = "none";
-   }
-}
 
 let main = document.querySelector("main")
 let cards = document.querySelector(".playlistCards")
@@ -48,6 +36,9 @@ playlists.forEach(function (playlist) {
    let blurb = temp_card.querySelector("p")
    blurb.innerText = `Created by ${playlist.playlist_creator}`
    let mine = temp_card.querySelector(".modal")
+   let edit  = temp_card.querySelector(".edit")
+
+
 
 
 
@@ -100,9 +91,23 @@ playlists.forEach(function (playlist) {
    image.src = playlist.playlist_art
    title.innerText = playlist.playlist_name
    main.appendChild(temp_card)  
-   temp_card.addEventListener("click", (e) => openModal(playlist,e))
+   temp_card.addEventListener("click", () => openModal(playlist,temp_card))
+
    
-    
+
+   edit.addEventListener("click", () => {
+      editFunc(temp_card)
+   })
+
+   let save = document.querySelector(".save")
+   console.log(save)
+   save.addEventListener("click", ()=> {
+      console.log("here")
+      // saveClicked(temp_card,e);
+   })
+
+   
+   
 })
 
 
@@ -128,7 +133,27 @@ function shuffle (songs,mine,playlist) {
  }
 
 
+ function editFunc(temp_card) {
+   let editMenu = document.querySelector(".editMenu");
+   editMenu.innerHTML = `
+       <label for="name"> Name </label>
+       <input type="text" id="name" name="name" placeholder="${temp_card.querySelector("h4").innerText}" required>
+       
+       <label for="creater"> Your name:</label>
+       <input type="text" name="creater" id="creater" placeholder="${temp_card.querySelector("p").innerText}" required>
+       
+       <button class="save">Save</button>
+   `;
+   editMenu.style.display = "flex";
+   // Add event listener for the save button here
+   let saveButton = editMenu.querySelector(".save");
+   saveButton.addEventListener("click", () => {
+       let name = document.querySelector("#name").value;
+       temp_card.querySelector("h4").innerText = name;
+       editMenu.style.display = "none";
+   });
+}
 
-
+   
 
 

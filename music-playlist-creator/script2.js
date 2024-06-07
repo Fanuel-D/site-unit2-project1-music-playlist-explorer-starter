@@ -30,5 +30,4 @@ for(let i = 0; i < songs.length; i++) {
 
     songList.appendChild(copy1)
 
-
 }

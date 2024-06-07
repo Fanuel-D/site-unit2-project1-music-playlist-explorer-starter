@@ -19,10 +19,11 @@
     <main> 
 
     <div class = "playlistCards">
+        <button class="edit">Edit</button>
         <div class="new">
             <img id = "playListImg" src="./assets/img/playlist.png" alt="image 1">
             <div class="tt">
-                <h4>song 3 name</h2>
+                <h4>song 3 name</h4>
                 <p>song 1 description</p>
                 <div class="likeBar">
                 <span class="like">&#10084;</span>
@@ -72,14 +73,20 @@
          </div>
         
     </div>
-    
+   
+    <div class = "editMenu">
 
-
-
-    
+        <label for="name"> Name </label>
+        <input type="text" id="name" name="name" placeholder = "" >
         
-            
+        <label for="creater"> Your name:</label>
+        <input type="text" name="creater" id = "creater" placeholder =  "" >
+        
+        <button class="save">Save</button>
+
+    </div>
     </main>
+    
 
     <footer>
         <p>footer content goes here</p>
