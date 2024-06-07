@@ -1,6 +1,7 @@
 
 let bottomMod = document.querySelector(".bottomMod") 
 let clone1 = bottomMod.cloneNode(true)
+let flag = true
 
 // JavaScript for Opening and Closing the Modal
 function openModal(festival, temp_card) {
@@ -13,6 +14,8 @@ function openModal(festival, temp_card) {
       event.stopPropagation()
       modal.style.display = "none"
    };
+
+
 }
 
 
@@ -90,11 +93,22 @@ playlists.forEach(function (playlist) {
 
    image.src = playlist.playlist_art
    title.innerText = playlist.playlist_name
-   main.appendChild(temp_card)  
-   temp_card.addEventListener("click", () => openModal(playlist,temp_card))
+   let deleteButton = temp_card.querySelector(".delete")
 
+   deleteButton.addEventListener("click", (e) => {
+      e.stopPropagation()
+      temp_card.remove()
+      
+      flag = false
+   })
+
+   if (flag == true){
+      main.appendChild(temp_card)
+   }
    
-
+   temp_card.addEventListener("click", () => openModal(playlist,temp_card))
+   
+   
    edit.addEventListener("click", (e) => {
       e.stopPropagation()
       editFunc(temp_card)
