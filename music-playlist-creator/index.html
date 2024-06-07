@@ -3,85 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Home Page</title>
+    <script src="script2.js" defer> </script>
+    <script src="data/data.js"></script>
+    <link rel="stylesheet" href="style2.css">
     
-    <title>Music Playlist Explorer</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
     <header>
-        <h1 class="headerText">Music Playlist Explorer</h1>
-        
+        <h1 class="featuredList" >Featured Playlists</h1>
     </header>
-
-    <main> 
-
-    <div class = "playlistCards">
-        <img id = "playListImg" src="./assets/img/playlist.png" alt="image 1">
-        <div class="tt">
-            <h4>song 3 name</h2>
-            <p>song 1 description</p>
-            <div class="likeBar">
-             <span class="like">&#10084;</span>
-                <h6 class="counter">0</h6>
+    <main>
+        <div class = "card">
+            <div class="innerDiv">
+                <a href="featured.html"> <img class = "image" src= "" alt=""> </a>
+                <div class="tt">
+                    <h4>song 3 name</h4>
+                    <p>song 1 description</p>
+                </div>
             </div>
             
-        </div>
-
-        <div id="festivalModal" class="modal">
-            <div class="modal-content">
-               <span class="close">&times;</span>
-               
-               <div class = "topMod">
-                    <div class = "topLeft">
-                        <img class="festivalImage" src= "./assets/img/playlist.png" alt="Festival Image">
-                        <button>Shuffle</button>
-                    </div>
-                    
-                    
-                    <div class = "topRight">
-                        <h1 class="festivalName"></h1>
-                        <h5 class="festivalText"> Name and festival type of thing</h5>
-                    </div>
-                    
-               </div>
-              
-               <div class = "bottomPart">
-                    <div class = "bottomMod">
+            
+            <div class="songList">
+                <div class = "bottomMod">
                         
-                        <div class="bottomLeft">
-                            <img class = "modImgBottom" src="./assets/img/song.png" alt="image 1">
-                            <div class="bottomInnerMod">
-                                <h3>song 3 name</h3>
-                                <h9>song 1 description</h9>
-                                <h7 ></h7>
-                            </div>
+                    <div class="bottomLeft">
+                        <img class = "modImgBottom" src="./assets/img/song.png" alt="image 1">
+                        <div class="bottomInnerMod">
+                            <h3>song 3 name</h3>
+                            <h9>song 1 description</h9>
+                            <h7 ></h7>
                         </div>
-                        
-                        <h5 class = "time">Time</h5>
-                    
                     </div>
-               </div>
-        
+                    
+                    <h5 class = "time">Time</h5>
+                
+                </div>
             </div>
-         </div>
-        
-    </div>
-    
-
-
-
-    
-        
-            
+        </div>
     </main>
-
-    <footer>
-        <p>footer content goes here</p>
-    </footer>
-    <script src="data/data.js"></script>
-    <script src="script.js" defer></script>
+    <footer></footer>
 </body>
 </html>

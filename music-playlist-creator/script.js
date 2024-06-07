@@ -6,8 +6,6 @@ let clone1 = bottomMod.cloneNode(true)
 
 function openModal(festival,event) {
 
-   // document.getElementById('festivalDates').innerText = `Dates: ${festival.dates}`;
-
    let songs = festival.songs;
    if (event.target.id == "playListImg"){
       let modal1 = event.target.parentNode.querySelector(".modal")

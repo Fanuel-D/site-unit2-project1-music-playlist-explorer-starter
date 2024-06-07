@@ -15,8 +15,13 @@ html,body {
 header {
     background-color: lightgray;
     padding: 10px;
-
+    display: flex;
+    justify-content: center;
+    
 }
+
+
+
 
 .tt {
     display: flex;
@@ -110,6 +115,8 @@ main {
     flex-direction: row;
     gap: 20px;
 }
+
+
 
 
 button {
