@@ -3,19 +3,19 @@ let main = document.querySelector("main")
 let bottomMod = document.querySelector(".bottomMod") 
 let originalBottomClone = bottomMod.cloneNode(true)
 let cards = document.querySelector(".playlistCards")
-let temp_card2 = cards.cloneNode(true)
+let cardClone = cards.cloneNode(true)
 main.removeChild(cards);
 
 let flag = true
 
 // JavaScript for Opening and Closing the Modal
-function openModal(temp_card) {
+function openModal(currCard) {
 
-   let modal = temp_card.querySelector(".modal");
+   let modal = currCard.querySelector(".modal");
    modal.style.display = "flex";
    modal.style.margin = "auto";
 
-   let closeButton = temp_card.querySelector(".close");
+   let closeButton = currCard.querySelector(".close");
    closeButton.onclick = function(event) {
       event.stopPropagation()
       modal.style.display = "none"
@@ -42,13 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //function for updating the number of likes   
-function likeControl(temp_card, playlist) {
+function likeControl(secondCardClone, playlist) {
 
-   let like = temp_card.querySelector(".like")
+   let like = secondCardClone.querySelector(".like")
    like.addEventListener("click",(e)=>{
       e.stopPropagation()
       playlist.likeCount +=1 
-      temp_card.querySelector(".counter").innerText = playlist.likeCount
+      secondCardClone.querySelector(".counter").innerText = playlist.likeCount
    })
 
    like.addEventListener("mouseenter",()=>{
@@ -89,10 +89,10 @@ function cardAdd(){
          <button class="save">Save</button>
       `;
 
-      let temp_card = temp_card2.cloneNode(true);
-      let title = temp_card.querySelector("h4")
-      let image  = temp_card.querySelector("#playListImg")
-      let blurb = temp_card.querySelector("p")
+      let secondCardClone = cardClone.cloneNode(true);
+      let title = secondCardClone.querySelector("h4")
+      let image  = secondCardClone.querySelector("#playListImg")
+      let blurb = secondCardClone.querySelector("p")
       
       title.innerText = editMenu.querySelector("#name").value
       blurb.innerText = editMenu.querySelector("#creater").value
@@ -100,7 +100,7 @@ function cardAdd(){
 
 
       editMenu.style.display = "flex";
-      main.appendChild(temp_card)
+      main.appendChild(secondCardClone)
       let saveButton = editMenu.querySelector(".save");
       saveButton.addEventListener("click", () => {
          title.innerText = editMenu.querySelector("#name").value
@@ -116,7 +116,7 @@ function cardAdd(){
          // }
          editMenu.style.display = "none";
       });
-      temp_card.addEventListener("click", () => openModal(temp_card))
+      secondCardClone.addEventListener("click", () => openModal(secondCardClone))
 
    })
 
@@ -130,17 +130,17 @@ function displayPlaylists(playlists){
       let songs = playlist.songs;
       let songs2;
    
-      let temp_card = temp_card2.cloneNode(true);
-      let title = temp_card.querySelector("h4")
-      let image  = temp_card.querySelector("#playListImg")
-      let blurb = temp_card.querySelector("p")
+      let secondCardClone = cardClone.cloneNode(true);
+      let title = secondCardClone.querySelector("h4")
+      let image  = secondCardClone.querySelector("#playListImg")
+      let blurb = secondCardClone.querySelector("p")
       blurb.innerText = `Created by ${playlist.playlist_creator}`
-      let modal = temp_card.querySelector(".modal")
-      let edit  = temp_card.querySelector(".edit")
+      let modal = secondCardClone.querySelector(".modal")
+      let edit  = secondCardClone.querySelector(".edit")
      
       edit.addEventListener("click", (e) => {
          e.stopPropagation()
-         editFunc(modal,temp_card, playlist)
+         editFunc(modal,secondCardClone, playlist)
       })
    
       modal.querySelector(".bottomMod").classList.add("song-0")
@@ -168,26 +168,26 @@ function displayPlaylists(playlists){
          cloneSong.querySelector(".time").innerText = songs[i].duration
       }
 
-      likeControl(temp_card, playlist)
+      likeControl(secondCardClone, playlist)
       modal.querySelector("button").addEventListener("click",() => shuffle(songs,modal,playlist))
    
    
       image.src = playlist.playlist_art
       title.innerText = playlist.playlist_name
-      let deleteButton = temp_card.querySelector(".delete")
+      let deleteButton = secondCardClone.querySelector(".delete")
    
       deleteButton.addEventListener("click", (e) => {
          e.stopPropagation()
-         temp_card.remove()
+         secondCardClone.remove()
          
          flag = false
       })
    
       if (flag == true){
-         main.appendChild(temp_card)
+         main.appendChild(secondCardClone)
       }
       
-      temp_card.addEventListener("click", () => openModal(temp_card))
+      secondCardClone.addEventListener("click", () => openModal(secondCardClone))
    })
 }
 
@@ -216,14 +216,14 @@ function shuffle (songs,mine,playlist) {
 }
 
 //Function for editing a playlist
- function editFunc (mine,temp_card,playlist) {
+ function editFunc (mine,secondCardClone,playlist) {
    let editMenu = document.querySelector(".editMenu");
    editMenu.innerHTML = `
        <label for="name"> Name </label>
-       <input type="text" id="name" name="name" placeholder="${temp_card.querySelector("h4").innerText}" >
+       <input type="text" id="name" name="name" placeholder="${secondCardClone.querySelector("h4").innerText}" >
        
        <label for="creater"> Your name:</label>
-       <input type="text" name="creater" id="creater" placeholder="${temp_card.querySelector(".songDescription").innerText}" >
+       <input type="text" name="creater" id="creater" placeholder="${secondCardClone.querySelector(".songDescription").innerText}" >
        
        <button class="save">Save</button>
    `;
@@ -239,8 +239,8 @@ function shuffle (songs,mine,playlist) {
    saveButton.addEventListener("click", () => {
       let name = document.querySelector("#name").value;
       let blurb = document.querySelector("#creater").value;
-      temp_card.querySelector("h4").innerText = name;
-      temp_card.querySelector(".songDescription").innerText=  blurb
+      secondCardClone.querySelector("h4").innerText = name;
+      secondCardClone.querySelector(".songDescription").innerText=  blurb
       
 
       for(let i = 0; i < playlist.songs.length; i++) {
