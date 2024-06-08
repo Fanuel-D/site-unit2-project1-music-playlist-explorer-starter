@@ -1,6 +1,11 @@
-
+// Pre-setup
+let main = document.querySelector("main")
 let bottomMod = document.querySelector(".bottomMod") 
 let clone1 = bottomMod.cloneNode(true)
+let cards = document.querySelector(".playlistCards")
+let temp_card2 = cards.cloneNode(true)
+main.removeChild(cards);
+
 let flag = true
 
 // JavaScript for Opening and Closing the Modal
@@ -15,21 +20,25 @@ function openModal(temp_card) {
       modal.style.display = "none"
    };
 
-
 }
 
+// JS for searching feature
+document.getElementById('searchInput').addEventListener('input', function(e) {
+   let searchQuery = e.target.value.toLowerCase();
+   let filteredPlaylists = data.playlists.filter((playlist) => 
+      playlist.playlist_name.toLowerCase().includes(searchQuery)||
+      playlist.playlist_creator.toLowerCase().includes(searchQuery)
+   );
 
-let main = document.querySelector("main")
-let cards = document.querySelector(".playlistCards")
-let temp_card2 = cards.cloneNode(true)
-main.removeChild(cards);
+   displayPlaylists(filteredPlaylists);
+});
 
-
-
+// Default Page
 document.addEventListener('DOMContentLoaded', function() {
    displayPlaylists(data.playlists);
 });
 
+// script for displaying playlist
 function displayPlaylists(playlists){
    main.innerHTML = '';
    cardAdd()
@@ -42,29 +51,29 @@ function displayPlaylists(playlists){
       let image  = temp_card.querySelector("#playListImg")
       let blurb = temp_card.querySelector("p")
       blurb.innerText = `Created by ${playlist.playlist_creator}`
-      let mine = temp_card.querySelector(".modal")
+      let modal = temp_card.querySelector(".modal")
       let edit  = temp_card.querySelector(".edit")
    
    
         
       edit.addEventListener("click", (e) => {
          e.stopPropagation()
-         mine = editFunc(mine,temp_card, playlist)
+         editFunc(modal,temp_card, playlist)
       })
    
    
    
-      mine.querySelector(".bottomMod").classList.add("song-0")
-      mine.querySelector(".playlistName").innerText = playlist.playlist_name;
-      mine.querySelector(".playlistImage").src = playlist.playlist_art;
-      mine.querySelector(".creatorNameModal").innerText = playlist.playlist_creator;
-      let temp3 = mine.querySelector(".bottomPart")
+      modal.querySelector(".bottomMod").classList.add("song-0")
+      modal.querySelector(".playlistName").innerText = playlist.playlist_name;
+      modal.querySelector(".playlistImage").src = playlist.playlist_art;
+      modal.querySelector(".creatorNameModal").innerText = playlist.playlist_creator;
+      let temp3 = modal.querySelector(".bottomPart")
    
-      mine.querySelector("h3").innerText = songs[0].title
-      mine.querySelector("h9").innerText = songs[0].artist
-      mine.querySelector(".modImgBottom").src = songs[0].cover_art
-      mine.querySelector("h7").innerText = songs[0].album
-      mine.querySelector(".time").innerText = songs[0].duration
+      modal.querySelector("h3").innerText = songs[0].title
+      modal.querySelector("h9").innerText = songs[0].artist
+      modal.querySelector(".modImgBottom").src = songs[0].cover_art
+      modal.querySelector("h7").innerText = songs[0].album
+      modal.querySelector(".time").innerText = songs[0].duration
    
    
    
@@ -99,7 +108,7 @@ function displayPlaylists(playlists){
       })
    
      
-      mine.querySelector("button").addEventListener("click",() => shuffle(songs,mine,playlist))
+      modal.querySelector("button").addEventListener("click",() => shuffle(songs,modal,playlist))
    
    
       image.src = playlist.playlist_art
@@ -147,7 +156,7 @@ function shuffle (songs,mine,playlist) {
       c.querySelector("h7").innerText = songs2[i].album
       c.querySelector(".time").innerText = songs2[i].duration
    }
- }
+}
 
 
  function editFunc (mine,temp_card,playlist) {
@@ -257,14 +266,3 @@ function cardAdd(){
 }
    
 
-
-
-document.getElementById('searchInput').addEventListener('input', function(e) {
-   let searchQuery = e.target.value.toLowerCase();
-   let filteredPlaylists = data.playlists.filter((playlist) => 
-      playlist.playlist_name.toLowerCase().includes(searchQuery)||
-      playlist.playlist_creator.toLowerCase().includes(searchQuery)
-   );
-
-   displayPlaylists(filteredPlaylists);
-});
