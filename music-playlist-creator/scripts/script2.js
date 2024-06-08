@@ -6,13 +6,10 @@ let selected = playlists[Math.floor(Math.random()*playlists.length)]
 
 let playImg = document.querySelector(".image")
 
-playImg.addEventListener("click",()=>{
-    
-})
 playImg.src = selected.playlist_art
 let title = document.querySelector("h4")
-let blurb = document.querySelector("p")
-blurb.innerText = `Created by ${selected.playlist_creator}`
+let smallblurb = document.querySelector("p")
+smallblurb.innerText = `Created by ${selected.playlist_creator}`
 title.innerText = selected.playlist_name
 
 let songList = document.querySelector(".songList")

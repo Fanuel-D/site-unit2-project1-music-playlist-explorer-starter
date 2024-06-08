@@ -152,10 +152,9 @@ button:hover {
     display: none; /* Hidden by default */
     position: fixed; 
     z-index: 1; /* Sit on top */
-    /* left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;  */
+    left: 30%;
+    top: 20%;
+
     width: 40%; /* Full width */
     height: 50%; /* Full height */
     background-color:  #fefefe; /* Black w/ opacity */
