@@ -49,7 +49,7 @@ Estimated time spent: **40** hours spent in total
 
 ### Walkthrough Video
 
-`ADD_EMBEDDED_CODE_HERE`
+[](https://www.loom.com/share/23721276cc39422db5967fb39e553d0c?sid=166a5ab3-bf34-42ed-9769-889db86adc56)
 
 ### Reflection
 
