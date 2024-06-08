@@ -20,18 +20,8 @@ header {
     gap: 50px;
     
 }
-.newCard {
-    width: 230px;
-    height: 330px;
-    border: solid;
-    border-width: 0;
-    border-radius: 10px;
-    margin: 20px;
-    background-color: white;
-    margin-top: 75px;
-}
 
-.tt {
+.singleCardBottom {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -64,7 +54,7 @@ main {
 }
 
 
-.new {
+.singleCard {
     
     width: 230px;
     height: 330px;
@@ -96,7 +86,7 @@ main {
     margin-bottom: 40px;
 }
 
-.festivalImage {
+.playlistImage {
     border-radius: 10px;
     width: 140px;
     height: 140px;

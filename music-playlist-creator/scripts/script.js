@@ -55,9 +55,9 @@ function displayPlaylists(playlists){
    
    
       mine.querySelector(".bottomMod").classList.add("song-0")
-      mine.querySelector(".festivalName").innerText = playlist.playlist_name;
-      mine.querySelector(".festivalImage").src = playlist.playlist_art;
-      mine.querySelector(".festivalText").innerText = playlist.playlist_creator;
+      mine.querySelector(".playlistName").innerText = playlist.playlist_name;
+      mine.querySelector(".playlistImage").src = playlist.playlist_art;
+      mine.querySelector(".creatorNameModal").innerText = playlist.playlist_creator;
       let temp3 = mine.querySelector(".bottomPart")
    
       mine.querySelector("h3").innerText = songs[0].title
@@ -198,6 +198,7 @@ function shuffle (songs,mine,playlist) {
 
 function cardAdd(){
    let addCard = document.createElement("div")
+   addCard.classList.add = "newCardGenerator"
    addCard.style.width = "230px"
    addCard.style.height = "330px"
    addCard.style.border = "solid"
