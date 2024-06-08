@@ -19,9 +19,16 @@ header {
     justify-content: center;
     
 }
-
-
-
+.newCard {
+    width: 230px;
+    height: 330px;
+    border: solid;
+    border-width: 0;
+    border-radius: 10px;
+    margin: 20px;
+    background-color: white;
+    margin-top: 75px;
+}
 
 .tt {
     display: flex;
@@ -135,6 +142,11 @@ button:hover {
 }
 
 .bottomInnerMod {
+    display: flex;
+    flex-direction: column;
+}
+
+.editMenu {
     display: flex;
     flex-direction: column;
 }
