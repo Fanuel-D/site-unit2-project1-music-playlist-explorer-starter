@@ -25,100 +25,105 @@ let temp_card2 = cards.cloneNode(true)
 main.removeChild(cards);
 
 
-let playlists = data.playlists;
 
+document.addEventListener('DOMContentLoaded', function() {
+   displayPlaylists(data.playlists);
+});
 
-
-playlists.forEach(function (playlist) {
-   let songs = playlist.songs;
-   let songs2;
-
-   let temp_card = temp_card2.cloneNode(true);
-   let title = temp_card.querySelector("h4")
-   let image  = temp_card.querySelector("#playListImg")
-   let blurb = temp_card.querySelector("p")
-   blurb.innerText = `Created by ${playlist.playlist_creator}`
-   let mine = temp_card.querySelector(".modal")
-   let edit  = temp_card.querySelector(".edit")
-
-
-     
-   edit.addEventListener("click", (e) => {
-      e.stopPropagation()
-      editFunc(mine,temp_card, playlist)
-   })
-
-
-
-   mine.querySelector(".bottomMod").classList.add("song-0")
-   mine.querySelector(".festivalName").innerText = playlist.playlist_name;
-   mine.querySelector(".festivalImage").src = playlist.playlist_art;
-   mine.querySelector(".festivalText").innerText = playlist.playlist_creator;
-   let temp3 = mine.querySelector(".bottomPart")
-
-   mine.querySelector("h3").innerText = songs[0].title
-   mine.querySelector("h9").innerText = songs[0].artist
-   mine.querySelector(".modImgBottom").src = songs[0].cover_art
-   mine.querySelector("h7").innerText = songs[0].album
-   mine.querySelector(".time").innerText = songs[0].duration
-
-
-
-   for(let i = 1; i < songs.length; i++){
-      let c = clone1.cloneNode(true)
-      temp3.appendChild(c)   
-      c.classList.add(`song-${i}`)
-      c.querySelector("h3").innerText = songs[i].title
-      c.querySelector(".modImgBottom").src = songs[i].cover_art
-      c.querySelector("h9").innerText = songs[i].artist
-      c.querySelector("h7").innerText = songs[i].album
-      c.querySelector(".time").innerText = songs[i].duration
-   }
-
-
-   let like = temp_card.querySelector(".like")
-
+function displayPlaylists(playlists){
+   main.innerHTML = '';
+   playlists.forEach(function (playlist) {
+      let songs = playlist.songs;
+      let songs2;
    
-   like.addEventListener("click",(e)=>{
-      e.stopPropagation()
-      playlist.likeCount +=1 
-      temp_card.querySelector(".counter").innerText = playlist.likeCount
-      
-      
-   })
-
-   like.addEventListener("mouseenter",()=>{
-      like.style.color = "red";
-      like.addEventListener("mouseleave",()=>{
-         like.style.color = "black";
+      let temp_card = temp_card2.cloneNode(true);
+      let title = temp_card.querySelector("h4")
+      let image  = temp_card.querySelector("#playListImg")
+      let blurb = temp_card.querySelector("p")
+      blurb.innerText = `Created by ${playlist.playlist_creator}`
+      let mine = temp_card.querySelector(".modal")
+      let edit  = temp_card.querySelector(".edit")
+   
+   
+        
+      edit.addEventListener("click", (e) => {
+         e.stopPropagation()
+         editFunc(mine,temp_card, playlist)
       })
-   })
-
-  
-   mine.querySelector("button").addEventListener("click",() => shuffle(songs,mine,playlist))
-
-
-   image.src = playlist.playlist_art
-   title.innerText = playlist.playlist_name
-   let deleteButton = temp_card.querySelector(".delete")
-
-   deleteButton.addEventListener("click", (e) => {
-      e.stopPropagation()
-      temp_card.remove()
+   
+   
+   
+      mine.querySelector(".bottomMod").classList.add("song-0")
+      mine.querySelector(".festivalName").innerText = playlist.playlist_name;
+      mine.querySelector(".festivalImage").src = playlist.playlist_art;
+      mine.querySelector(".festivalText").innerText = playlist.playlist_creator;
+      let temp3 = mine.querySelector(".bottomPart")
+   
+      mine.querySelector("h3").innerText = songs[0].title
+      mine.querySelector("h9").innerText = songs[0].artist
+      mine.querySelector(".modImgBottom").src = songs[0].cover_art
+      mine.querySelector("h7").innerText = songs[0].album
+      mine.querySelector(".time").innerText = songs[0].duration
+   
+   
+   
+      for(let i = 1; i < songs.length; i++){
+         let c = clone1.cloneNode(true)
+         temp3.appendChild(c)   
+         c.classList.add(`song-${i}`)
+         c.querySelector("h3").innerText = songs[i].title
+         c.querySelector(".modImgBottom").src = songs[i].cover_art
+         c.querySelector("h9").innerText = songs[i].artist
+         c.querySelector("h7").innerText = songs[i].album
+         c.querySelector(".time").innerText = songs[i].duration
+      }
+   
+   
+      let like = temp_card.querySelector(".like")
+   
       
-      flag = false
+      like.addEventListener("click",(e)=>{
+         e.stopPropagation()
+         playlist.likeCount +=1 
+         temp_card.querySelector(".counter").innerText = playlist.likeCount
+         
+         
+      })
+   
+      like.addEventListener("mouseenter",()=>{
+         like.style.color = "red";
+         like.addEventListener("mouseleave",()=>{
+            like.style.color = "black";
+         })
+      })
+   
+     
+      mine.querySelector("button").addEventListener("click",() => shuffle(songs,mine,playlist))
+   
+   
+      image.src = playlist.playlist_art
+      title.innerText = playlist.playlist_name
+      let deleteButton = temp_card.querySelector(".delete")
+   
+      deleteButton.addEventListener("click", (e) => {
+         e.stopPropagation()
+         temp_card.remove()
+         
+         flag = false
+      })
+   
+      if (flag == true){
+         main.appendChild(temp_card)
+      }
+      
+      temp_card.addEventListener("click", () => openModal(temp_card))
+      
+    
+      
+      
    })
+}
 
-   if (flag == true){
-      main.appendChild(temp_card)
-   }
-   
-   temp_card.addEventListener("click", () => openModal(temp_card))
-   
- 
-   
-   
-})
 
 
 function shuffle (songs,mine,playlist) {
@@ -235,3 +240,13 @@ addCard.addEventListener("click",()=>{
 
 })
 
+
+document.getElementById('searchInput').addEventListener('input', function(e) {
+   let searchQuery = e.target.value.toLowerCase();
+   let filteredPlaylists = data.playlists.filter((playlist) => 
+      playlist.playlist_name.toLowerCase().includes(searchQuery)||
+      playlist.playlist_creator.toLowerCase().includes(searchQuery)
+   );
+
+   displayPlaylists(filteredPlaylists);
+});
