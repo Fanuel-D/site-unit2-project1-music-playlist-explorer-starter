@@ -73,7 +73,13 @@ function cardAdd(){
    addCard.style.margin = "20px"
    addCard.style.backgroundColor = "white"
    addCard.style.marginTop = "75px"
+   let plusIcon = document.createElement("img")
+   plusIcon.classList.add("icon")
+   addCard.appendChild(plusIcon)
+   plusIcon.src = "assets/img/icon.png"
+   addCard.querySelector(".icon").style.margin = "100px"
    main.appendChild(addCard)
+   
 
 
    addCard.addEventListener("click",()=>{
@@ -85,6 +91,14 @@ function cardAdd(){
          
          <label for="creater"> Your name:</label>
          <input type="text" name="creater" id="creater" placeholder="" >
+         <label for="creater"> song 1</label>
+         <input type="text" name="creater" id="creater" placeholder="" >
+         <label for="creater"> song 2</label>
+         <input type="text" name="creater" id="creater" placeholder="" >
+         <label for="creater"> song 3</label>
+         <input type="text" name="creater" id="creater" placeholder="" >
+         
+         
          
          <button class="save">Save</button>
       `;
@@ -106,14 +120,6 @@ function cardAdd(){
          title.innerText = editMenu.querySelector("#name").value
          blurb.innerText = editMenu.querySelector("#creater").value
          
-
-         // for(let i = 0; i < playlist.songs.length; i++) {
-         //    let temp = editMenu.querySelector(`.song-${i}`)
-         //    console.log(temp.value)
-         //    mine.querySelector(`.song-${i}`).innerText = temp.value
-         //    console.log(mine)
-
-         // }
          editMenu.style.display = "none";
       });
       secondCardClone.addEventListener("click", () => openModal(secondCardClone))
@@ -230,7 +236,6 @@ function shuffle (songs,mine,playlist) {
    for(let i = 0; i < playlist.songs.length; i++){
       editMenu.innerHTML += ` <label for="name"> Name of Song </label>
       <input type="text" class="song-${i}" name="name" placeholder="${playlist.songs[i].title}" >
-      <input type="text" class="song-${i}" name="name" placeholder="${playlist.songs[i].title}" >
       `
    }
 
@@ -241,6 +246,8 @@ function shuffle (songs,mine,playlist) {
       let blurb = document.querySelector("#creater").value;
       secondCardClone.querySelector("h4").innerText = name;
       secondCardClone.querySelector(".songDescription").innerText=  blurb
+      mine.querySelector(".playlistName").innerText = name
+      mine.querySelector(".creatorNameModal").innerText = blurb
       
 
       for(let i = 0; i < playlist.songs.length; i++) {
