@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function displayPlaylists(playlists){
    main.innerHTML = '';
+   cardAdd()
    playlists.forEach(function (playlist) {
       let songs = playlist.songs;
       let songs2;
@@ -48,7 +49,7 @@ function displayPlaylists(playlists){
         
       edit.addEventListener("click", (e) => {
          e.stopPropagation()
-         editFunc(mine,temp_card, playlist)
+         mine = editFunc(mine,temp_card, playlist)
       })
    
    
@@ -191,54 +192,70 @@ function shuffle (songs,mine,playlist) {
       }
       editMenu.style.display = "none";
    });
+   return mine
 }
 
-   
-let addCard = document.querySelector(".newCard")
 
-addCard.addEventListener("click",()=>{
-   let editMenu = document.querySelector(".editMenu");
-   
-   editMenu.innerHTML = `
-       <label for="name"> Name </label>
-       <input type="text" id="name" name="name" placeholder="" >
-       
-       <label for="creater"> Your name:</label>
-       <input type="text" name="creater" id="creater" placeholder="" >
-       
-       <button class="save">Save</button>
-   `;
-
-   let temp_card = temp_card2.cloneNode(true);
-   let title = temp_card.querySelector("h4")
-   let image  = temp_card.querySelector("#playListImg")
-   let blurb = temp_card.querySelector("p")
-   
-   title.innerText = editMenu.querySelector("#name").value
-   blurb.innerText = editMenu.querySelector("#creater").value
-   
+function cardAdd(){
+   let addCard = document.createElement("div")
+   addCard.style.width = "230px"
+   addCard.style.height = "330px"
+   addCard.style.border = "solid"
+   addCard.style.borderWidth = "0"
+   addCard.style.borderRadius = "10px"
+   addCard.style.margin = "20px"
+   addCard.style.backgroundColor = "white"
+   addCard.style.marginTop = "75px"
+   main.appendChild(addCard)
 
 
-   editMenu.style.display = "flex";
-   main.appendChild(temp_card)
-   let saveButton = editMenu.querySelector(".save");
-   saveButton.addEventListener("click", () => {
+   addCard.addEventListener("click",()=>{
+      let editMenu = document.querySelector(".editMenu");
+      
+      editMenu.innerHTML = `
+         <label for="name"> Name </label>
+         <input type="text" id="name" name="name" placeholder="" >
+         
+         <label for="creater"> Your name:</label>
+         <input type="text" name="creater" id="creater" placeholder="" >
+         
+         <button class="save">Save</button>
+      `;
+
+      let temp_card = temp_card2.cloneNode(true);
+      let title = temp_card.querySelector("h4")
+      let image  = temp_card.querySelector("#playListImg")
+      let blurb = temp_card.querySelector("p")
+      
       title.innerText = editMenu.querySelector("#name").value
       blurb.innerText = editMenu.querySelector("#creater").value
       
 
-      // for(let i = 0; i < playlist.songs.length; i++) {
-      //    let temp = editMenu.querySelector(`.song-${i}`)
-      //    console.log(temp.value)
-      //    mine.querySelector(`.song-${i}`).innerText = temp.value
-      //    console.log(mine)
 
-      // }
-      editMenu.style.display = "none";
-   });
-   temp_card.addEventListener("click", () => openModal(temp_card))
+      editMenu.style.display = "flex";
+      main.appendChild(temp_card)
+      let saveButton = editMenu.querySelector(".save");
+      saveButton.addEventListener("click", () => {
+         title.innerText = editMenu.querySelector("#name").value
+         blurb.innerText = editMenu.querySelector("#creater").value
+         
 
-})
+         // for(let i = 0; i < playlist.songs.length; i++) {
+         //    let temp = editMenu.querySelector(`.song-${i}`)
+         //    console.log(temp.value)
+         //    mine.querySelector(`.song-${i}`).innerText = temp.value
+         //    console.log(mine)
+
+         // }
+         editMenu.style.display = "none";
+      });
+      temp_card.addEventListener("click", () => openModal(temp_card))
+
+   })
+
+}
+   
+
 
 
 document.getElementById('searchInput').addEventListener('input', function(e) {
