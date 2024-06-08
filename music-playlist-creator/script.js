@@ -4,7 +4,7 @@ let clone1 = bottomMod.cloneNode(true)
 let flag = true
 
 // JavaScript for Opening and Closing the Modal
-function openModal(festival, temp_card) {
+function openModal(temp_card) {
    let modal = temp_card.querySelector(".modal");
    modal.style.display = "flex";
    modal.style.margin = "auto";
@@ -49,7 +49,8 @@ playlists.forEach(function (playlist) {
    })
 
 
-   mine.classList.add("song-0")
+
+   mine.querySelector(".bottomMod").classList.add("song-0")
    mine.querySelector(".festivalName").innerText = playlist.playlist_name;
    mine.querySelector(".festivalImage").src = playlist.playlist_art;
    mine.querySelector(".festivalText").innerText = playlist.playlist_creator;
@@ -112,7 +113,7 @@ playlists.forEach(function (playlist) {
       main.appendChild(temp_card)
    }
    
-   temp_card.addEventListener("click", () => openModal(playlist,temp_card))
+   temp_card.addEventListener("click", () => openModal(temp_card))
    
  
    
@@ -176,7 +177,9 @@ function shuffle (songs,mine,playlist) {
 
       for(let i = 0; i < playlist.songs.length; i++) {
          let temp = editMenu.querySelector(`.song-${i}`)
-         console.log(temp.value)
+         // console.log(temp)
+         console.log(mine)
+         console.log(mine.querySelector(`.song-${i}`))
          mine.querySelector(`.song-${i}`).innerText = temp.value
          console.log(mine)
 
@@ -228,6 +231,7 @@ addCard.addEventListener("click",()=>{
       // }
       editMenu.style.display = "none";
    });
+   temp_card.addEventListener("click", () => openModal(temp_card))
 
 })
 
