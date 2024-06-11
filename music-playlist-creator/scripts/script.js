@@ -35,6 +35,18 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
    displayPlaylists(filteredPlaylists);
 
 });
+//JS for sorting
+document.getElementById('searchInput').addEventListener('input', function(e) {
+
+   let searchQuery = e.target.value.toLowerCase();
+   let filteredPlaylists = data.playlists.filter((playlist) => 
+      playlist.playlist_name.toLowerCase().includes(searchQuery)||
+      playlist.playlist_creator.toLowerCase().includes(searchQuery)
+   );
+
+   displayPlaylists(filteredPlaylists);
+
+});
 
 // Default Page
 document.addEventListener('DOMContentLoaded', function() {
